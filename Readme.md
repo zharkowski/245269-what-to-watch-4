@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Максим Жарков](https://up.htmlacademy.ru/react/4/user/245269).
-* Наставник: `Неизвестно`.
+* Наставник: [Богдан Волик](https://htmlacademy.ru/profile/id997699).
 
 ---
 
