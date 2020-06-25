@@ -10,6 +10,6 @@ const App = (props) => {
       releaseYear={releaseYear}
     />
   );
-}
+};
 
 export default App;

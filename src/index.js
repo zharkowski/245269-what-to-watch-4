@@ -9,10 +9,10 @@ const PromoFilm = {
 };
 
 ReactDOM.render(
-  <App
-    title={PromoFilm.title}
-    genre={PromoFilm.genre}
-    releaseYear={PromoFilm.releaseYear}
-  />,
-  document.getElementById(`root`)
+    <App
+      title={PromoFilm.title}
+      genre={PromoFilm.genre}
+      releaseYear={PromoFilm.releaseYear}
+    />,
+    document.getElementById(`root`)
 );

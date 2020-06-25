@@ -31,7 +31,7 @@ const Main = (props) => {
           <div className="movie-card__info">
             <div className="movie-card__poster">
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
-                   height="327"/>
+                height="327"/>
             </div>
 
             <div className="movie-card__desc">
@@ -101,7 +101,7 @@ const Main = (props) => {
             <article className="small-movie-card catalog__movies-card">
               <div className="small-movie-card__image">
                 <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                     alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
+                  alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
               </div>
               <h3 className="small-movie-card__title">
                 <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
@@ -306,6 +306,6 @@ const Main = (props) => {
       </div>
     </>
   );
-}
+};
 
 export default Main;
