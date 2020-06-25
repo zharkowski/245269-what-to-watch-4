@@ -1,9 +1,14 @@
 import React from "react";
 import Main from "../main/main.jsx";
 
-const App = () => {
+const App = (props) => {
+  const {title, genre, releaseYear} = props;
   return (
-    <Main/>
+    <Main
+      title={title}
+      genre={genre}
+      releaseYear={releaseYear}
+    />
   );
 }
 
