@@ -3,12 +3,13 @@ import Main from "../main/main.jsx";
 
 const App = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {title, genre, releaseYear} = props;
+  const {title, genre, releaseYear, filmTitles} = props;
   return (
     <Main
       title={title}
       genre={genre}
       releaseYear={releaseYear}
+      filmTitles={filmTitles}
     />
   );
 };
