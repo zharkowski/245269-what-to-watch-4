@@ -5,7 +5,7 @@ import App from "./compoents/app/app.jsx";
 const PromoFilm = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
-  releaseYear: `2014`,
+  releaseYear: 2014,
 };
 
 const filmTitles = [
