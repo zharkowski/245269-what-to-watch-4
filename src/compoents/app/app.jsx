@@ -4,12 +4,14 @@ import Main from "../main/main.jsx";
 
 const App = (props) => {
   const {title, genre, releaseYear, filmTitles} = props;
+  const filmTitleClickHandler = () => {};
   return (
     <Main
       title={title}
       genre={genre}
       releaseYear={releaseYear}
       filmTitles={filmTitles}
+      filmTitleClickHandler={filmTitleClickHandler}
     />
   );
 };
