@@ -18,6 +18,7 @@ describe(`Render Main`, () => {
           genre={`Drama`}
           releaseYear={2014}
           filmTitles={filmTitles}
+          filmTitleClickHandler={() => {}}
         />
     ).toJSON();
 
