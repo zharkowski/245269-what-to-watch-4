@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FilmCard from "../film-card/film-card.jsx";
 
 const Main = (props) => {
   const {title, genre, releaseYear, films, onFilmTitleClick} = props;
