@@ -9,7 +9,7 @@ Enzyme.configure({
 
 describe(`Main e2e test`, () => {
   it(`Should film title be pressed`, () => {
-    const welcomeButtonClickHandler = jest.fn();
+    const onFilmTitleClick = jest.fn();
     const films = [{
       title: `Fantastic Beasts: The Crimes of Grindelwald`,
       picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -42,12 +42,13 @@ describe(`Main e2e test`, () => {
           genre={`Drama`}
           releaseYear={2014}
           films={films}
-          onFilmTitleClick={welcomeButtonClickHandler}
+          onFilmTitleClick={onFilmTitleClick}
         />
     );
 
-    const filmTitles = main.find(`.small-movie-card__title`);
-    filmTitles.map((filmTitle) => filmTitle.props().onClick());
-    expect(welcomeButtonClickHandler.mock.calls.length).toBe(films.length);
+    const filmCards = main.find(`FilmsList`).dive().find(`FilmCard`);
+    const filmTitles = filmCards.map((filmCard) => filmCard.dive().find(`.small-movie-card__title`));
+    filmTitles.map((title) => title.props().onClick());
+    expect(onFilmTitleClick.mock.calls.length).toBe(films.length);
   });
 });

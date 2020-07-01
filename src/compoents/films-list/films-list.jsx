@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FilmCard from "../film-card/film-card";
+import FilmCard from "../film-card/film-card.jsx";
 
 class FilmsList extends React.PureComponent {
   constructor(props) {
@@ -9,7 +9,7 @@ class FilmsList extends React.PureComponent {
       activeFilm: null,
     };
 
-    // this.handleFilmCardHover = this.handleFilmCardHover.bind(this);
+    this.handleFilmCardHover = this.handleFilmCardHover.bind(this);
   }
 
   handleFilmCardHover(film) {
@@ -17,7 +17,7 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, onFilmTitleClick} = this.props;
     return (
       <div className="catalog__movies-list">
         {films.map((film, index) => {
@@ -26,6 +26,7 @@ class FilmsList extends React.PureComponent {
               key={`${index}-${film.title}`}
               film={film}
               onHover={this.handleFilmCardHover}
+              onTitleClick={onFilmTitleClick}
             />);
         })
         }
@@ -41,6 +42,7 @@ FilmsList.propTypes = {
         picture: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
+  onFilmTitleClick: PropTypes.func.isRequired,
 };
 
 export default FilmsList;

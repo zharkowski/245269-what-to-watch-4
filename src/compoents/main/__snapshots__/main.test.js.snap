@@ -259,6 +259,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -277,17 +278,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Bohemian Rhapsody"
               height="175"
               src="img/bohemian-rhapsody.jpg"
               width="280"
@@ -300,17 +304,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Bohemian Rhapsody
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Macbeth"
               height="175"
               src="img/macbeth.jpg"
               width="280"
@@ -323,17 +330,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Macbeth
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Aviator"
               height="175"
               src="img/aviator.jpg"
               width="280"
@@ -346,17 +356,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Aviator
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="We need to talk about Kevin"
               height="175"
               src="img/we-need-to-talk-about-kevin.jpg"
               width="280"
@@ -369,17 +382,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              We need to talk about Kevin
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="What We Do in the Shadows"
               height="175"
               src="img/what-we-do-in-the-shadows.jpg"
               width="280"
@@ -392,17 +408,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              What We Do in the Shadows
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Revenant"
               height="175"
               src="img/revenant.jpg"
               width="280"
@@ -415,17 +434,20 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Revenant
+            </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Shutter Island"
               height="175"
               src="img/shutter-island.jpg"
               width="280"
@@ -438,7 +460,9 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Shutter Island
+            </a>
           </h3>
         </article>
       </div>

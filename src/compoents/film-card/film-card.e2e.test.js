@@ -19,6 +19,7 @@ it(`Hover on film card should pass to the callback data-object from which this c
       <FilmCard
         film={film}
         onHover={onHover}
+        onTitleClick={() => {}}
       />
   );
 

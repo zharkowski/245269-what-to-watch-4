@@ -2,7 +2,7 @@ import React from "react";
 import PropsTypes from "prop-types";
 
 const FilmCard = (props) => {
-  const {film, onHover} = props;
+  const {film, onHover, onTitleClick} = props;
   const {title, picture} = film;
   return (
     <article
@@ -17,6 +17,7 @@ const FilmCard = (props) => {
       </div>
       <h3
         className="small-movie-card__title"
+        onClick={onTitleClick}
       >
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>
       </h3>
@@ -30,6 +31,7 @@ FilmCard.propTypes = {
     picture: PropsTypes.string.isRequired,
   }).isRequired,
   onHover: PropsTypes.func.isRequired,
+  onTitleClick: PropsTypes.func.isRequired,
 };
 
 export default FilmCard;
