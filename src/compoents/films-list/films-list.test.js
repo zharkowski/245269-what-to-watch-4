@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import FilmsList from "./films-list.jsx";
 
 const films = [{
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -28,13 +28,10 @@ const films = [{
   picture: `img/shutter-island.jpg`,
 }];
 
-describe(`Render Main`, () => {
-  it(`Should WelcomeScreen render correctly`, () => {
+describe(`Render FilmsList`, () => {
+  it(`Should FilmsList render correctly`, () => {
     const tree = renderer.create(
-        <Main
-          title={`The Grand Budapest Hotel`}
-          genre={`Drama`}
-          releaseYear={2014}
+        <FilmsList
           films={films}
           onFilmTitleClick={() => {}}
         />
