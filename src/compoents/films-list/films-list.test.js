@@ -33,7 +33,7 @@ describe(`Render FilmsList`, () => {
     const tree = renderer.create(
         <FilmsList
           films={films}
-          onFilmTitleClick={() => {}}
+          onFilmClick={() => {}}
         />
     ).toJSON();
 

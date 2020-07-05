@@ -13,7 +13,7 @@ describe(`Render FilmCard`, () => {
         <FilmCard
           film={film}
           onHover={() => {}}
-          onTitleClick={() => {}}
+          onFilmClick={() => {}}
         />
     ).toJSON();
 

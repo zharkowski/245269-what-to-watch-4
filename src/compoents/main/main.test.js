@@ -36,7 +36,7 @@ describe(`Render Main`, () => {
           genre={`Drama`}
           releaseYear={2014}
           films={films}
-          onFilmTitleClick={() => {}}
+          onFilmClick={() => {}}
         />
     ).toJSON();
 

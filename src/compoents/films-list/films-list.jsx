@@ -17,7 +17,7 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films, onFilmTitleClick} = this.props;
+    const {films, onFilmClick} = this.props;
     return (
       <div className="catalog__movies-list">
         {films.map((film, index) => {
@@ -26,7 +26,9 @@ class FilmsList extends React.PureComponent {
               key={`${index}-${film.title}`}
               film={film}
               onHover={this.handleFilmCardHover}
-              onTitleClick={onFilmTitleClick}
+              onFilmClick={() => {
+                onFilmClick(film);
+              }}
             />);
         })
         }
@@ -42,7 +44,7 @@ FilmsList.propTypes = {
         picture: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
-  onFilmTitleClick: PropTypes.func.isRequired,
+  onFilmClick: PropTypes.func.isRequired,
 };
 
 export default FilmsList;
