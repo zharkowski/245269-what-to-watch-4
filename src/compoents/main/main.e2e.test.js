@@ -7,9 +7,13 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const mockEvent = {
+  preventDefault() {}
+};
+
 describe(`Main e2e test`, () => {
   it(`Should film title be pressed`, () => {
-    const onFilmTitleClick = jest.fn();
+    const onFilmClick = jest.fn();
     const films = [{
       title: `Fantastic Beasts: The Crimes of Grindelwald`,
       picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -42,13 +46,12 @@ describe(`Main e2e test`, () => {
           genre={`Drama`}
           releaseYear={2014}
           films={films}
-          onFilmTitleClick={onFilmTitleClick}
-        />
+          onFilmClick={onFilmClick}/>
     );
 
     const filmCards = main.find(`FilmsList`).dive().find(`FilmCard`);
     const filmTitles = filmCards.map((filmCard) => filmCard.dive().find(`.small-movie-card__title`));
-    filmTitles.map((title) => title.props().onClick());
-    expect(onFilmTitleClick.mock.calls.length).toBe(films.length);
+    filmTitles.map((title) => title.simulate(`click`, mockEvent));
+    expect(onFilmClick.mock.calls.length).toBe(films.length);
   });
 });
