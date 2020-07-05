@@ -4,16 +4,22 @@ import PropsTypes from "prop-types";
 const FilmCard = (props) => {
   const {film, onHover, onFilmClick} = props;
   const {title, picture} = film;
+  const handleFilmClick = (evt) => {
+    evt.preventDefault();
+    onFilmClick(film);
+  };
+  const handleMouseOver = () => {
+    onHover(film);
+  };
+
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseOver={() => {
-        onHover(film);
-      }}
+      onMouseOver={handleMouseOver}
     >
       <div
         className="small-movie-card__image"
-        onClick={onFilmClick}
+        onClick={handleFilmClick}
       >
         <img
           src={picture}
@@ -24,10 +30,7 @@ const FilmCard = (props) => {
       </div>
       <h3
         className="small-movie-card__title"
-        onClick={(evt) => {
-          evt.preventDefault();
-          onFilmClick();
-        }}
+        onClick={handleFilmClick}
       >
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>
       </h3>

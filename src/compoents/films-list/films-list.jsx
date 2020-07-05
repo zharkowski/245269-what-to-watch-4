@@ -10,14 +10,19 @@ class FilmsList extends React.PureComponent {
     };
 
     this.handleFilmCardHover = this.handleFilmCardHover.bind(this);
+    this.handleFilmClick = this.handleFilmClick.bind(this);
   }
 
   handleFilmCardHover(film) {
     this.setState({activeFilm: film});
   }
 
+  handleFilmClick(film) {
+    this.props.onFilmClick(film);
+  }
+
   render() {
-    const {films, onFilmClick} = this.props;
+    const {films} = this.props;
     return (
       <div className="catalog__movies-list">
         {films.map((film, index) => {
@@ -26,9 +31,7 @@ class FilmsList extends React.PureComponent {
               key={`${index}-${film.title}`}
               film={film}
               onHover={this.handleFilmCardHover}
-              onFilmClick={() => {
-                onFilmClick(film);
-              }}
+              onFilmClick={this.handleFilmClick}
             />);
         })
         }
