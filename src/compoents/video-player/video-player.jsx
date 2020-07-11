@@ -14,6 +14,13 @@ export default class VideoPlayer extends React.PureComponent {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.isPlaying !== state.isPlaying) {
+      return {isPlaying: props.isPlaying};
+    }
+    return null;
+  }
+
   componentDidMount() {
     const {src, poster} = this.props;
     const video = this._videoRef.current;
@@ -70,9 +77,6 @@ export default class VideoPlayer extends React.PureComponent {
 
   componentDidUpdate() {
     const video = this._videoRef.current;
-    if (this.props.isPlaying !== this.state.isPlaying) {
-      this.setState({isPlaying: this.props.isPlaying});
-    }
     if (this.state.isPlaying) {
       video.play();
     } else {
