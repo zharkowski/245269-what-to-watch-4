@@ -1,7 +1,7 @@
 export const films = [{
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
   picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
   title: `Bohemian Rhapsody`,
   picture: `img/bohemian-rhapsody.jpg`,
@@ -9,7 +9,7 @@ export const films = [{
 }, {
   title: `Macbeth`,
   picture: `img/macbeth.jpg`,
-  src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
   title: `Aviator`,
   picture: `img/aviator.jpg`,
@@ -17,7 +17,7 @@ export const films = [{
 }, {
   title: `We need to talk about Kevin`,
   picture: `img/we-need-to-talk-about-kevin.jpg`,
-  src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
   title: `What We Do in the Shadows`,
   picture: `img/what-we-do-in-the-shadows.jpg`,
@@ -25,7 +25,7 @@ export const films = [{
 }, {
   title: `Revenant`,
   picture: `img/revenant.jpg`,
-  src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
   title: `Shutter Island`,
   picture: `img/shutter-island.jpg`,
