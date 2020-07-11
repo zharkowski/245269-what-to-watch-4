@@ -10,7 +10,7 @@ export default class VideoPlayer extends React.PureComponent {
       progress: 0,
       volume: 0,
       isLoading: true,
-      // isPlaying: props.isPlaying,
+      isPlaying: this.props.isPlaying,
     };
   }
 
