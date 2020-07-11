@@ -28,5 +28,4 @@ it(`Hover on film card should pass to the callback data-object from which this c
 
   filmCard.simulate(`mouseEnter`);
   setTimeout(() => expect(onHover.mock.calls[0][0]).toMatchObject(film), 1000);
-  // expect(onHover.mock.calls[0][0]).toMatchObject(film);
 });

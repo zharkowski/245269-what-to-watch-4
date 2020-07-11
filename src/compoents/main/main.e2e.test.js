@@ -54,7 +54,8 @@ describe(`Main e2e test`, () => {
           genre={`Drama`}
           releaseYear={2014}
           films={films}
-          onFilmClick={onFilmClick}/>
+          onFilmClick={onFilmClick}
+        />
     );
 
     const filmCards = main.find(`FilmCard`);
