@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmCard from "./film-card";
+import VideoPlayer from "./video-player.jsx";
 
 const film = {
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -8,15 +8,13 @@ const film = {
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
-describe(`Render FilmCard`, () => {
-  it(`Should FilmCard render correctly`, () => {
+describe(`Render FilmsList`, () => {
+  it(`Should FilmsList render correctly`, () => {
     const tree = renderer.create(
-        <FilmCard
-          film={film}
-          onHover={() => {}}
-          onFilmClick={() => {}}
+        <VideoPlayer
           isPlaying={false}
-          onFilmCardLeave={() => {}}
+          poster={film.picture}
+          src={film.src}
         />, {
           createNodeMock: () => {
             return {};

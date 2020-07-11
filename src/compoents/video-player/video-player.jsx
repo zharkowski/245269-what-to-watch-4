@@ -70,7 +70,10 @@ export default class VideoPlayer extends React.PureComponent {
 
   componentDidUpdate() {
     const video = this._videoRef.current;
-    if (this.props.isPlaying) {
+    if (this.props.isPlaying !== this.state.isPlaying) {
+      this.setState({isPlaying: this.props.isPlaying});
+    }
+    if (this.state.isPlaying) {
       video.play();
     } else {
       video.load();
