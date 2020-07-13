@@ -15,7 +15,7 @@ class App extends React.PureComponent {
     this.handleFilmClick = this.handleFilmClick.bind(this);
   }
 
-  handleFilmClick(film) {
+  handleFilmClick() {
     this.setState({currentFilm: filmDetails});
   }
 

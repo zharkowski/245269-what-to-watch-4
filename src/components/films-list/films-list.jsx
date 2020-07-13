@@ -9,26 +9,37 @@ class FilmsList extends React.PureComponent {
       activeFilm: null,
     };
 
-    this.handleFilmCardHover = this.handleFilmCardHover.bind(this);
+    this._handleFilmCardHover = this._handleFilmCardHover.bind(this);
+    this._handlerFilmCardLeave = this._handlerFilmCardLeave.bind(this);
+    this._handleFilmClick = this._handleFilmClick.bind(this);
   }
 
-  handleFilmCardHover(film) {
+  _handleFilmCardHover(film) {
     this.setState({activeFilm: film});
   }
 
+  _handlerFilmCardLeave() {
+    this.setState({activeFilm: null});
+  }
+
+  _handleFilmClick(film) {
+    this.props.onFilmClick(film);
+  }
+
   render() {
-    const {films, onFilmClick} = this.props;
+    const {films} = this.props;
     return (
       <div className="catalog__movies-list">
         {films.map((film, index) => {
+          const isActive = this.state.activeFilm === film;
           return (
             <FilmCard
               key={`${index}-${film.title}`}
               film={film}
-              onHover={this.handleFilmCardHover}
-              onFilmClick={() => {
-                onFilmClick(film);
-              }}
+              onHover={this._handleFilmCardHover}
+              onFilmCardLeave={this._handlerFilmCardLeave}
+              onFilmClick={this._handleFilmClick}
+              isPlaying={isActive}
             />);
         })
         }
