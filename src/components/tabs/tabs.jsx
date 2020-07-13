@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Tab} from "../../constants";
+import Overview from "../overview/overview.jsx";
 
 class Tabs extends React.PureComponent {
   constructor(props) {
@@ -18,10 +20,18 @@ class Tabs extends React.PureComponent {
     };
   }
 
-  _getCompoentByTab(tab) {
+  _getComponentByTab(tab) {
+    const {film} = this.props;
     switch (tab) {
       case Tab.OVERVIEW:
-        return <>overview</>;
+        const {actors, descriptions, director, ratingsCount, score} = film;
+        return <Overview
+          actors={actors}
+          descriptions={descriptions}
+          director={director}
+          ratingsCount={ratingsCount}
+          score={score}
+        />;
       case Tab.DETAILS:
         return <>details</>;
       case Tab.REVIEWS:
@@ -52,7 +62,7 @@ class Tabs extends React.PureComponent {
           </ul>
         </nav>
 
-        {this._getCompoentByTab(this.state.activeTab)}
+        {this._getComponentByTab(this.state.activeTab)}
         <div className="movie-card__text movie-card__row">
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
@@ -97,5 +107,24 @@ class Tabs extends React.PureComponent {
     );
   }
 }
+
+Tabs.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
+    descriptions: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
+  }).isRequired,
+};
 
 export default Tabs;
