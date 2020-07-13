@@ -46,4 +46,5 @@ export const filmDetails = {
   ],
   director: `Wes Andreson`,
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  runtime: 109,
 };

@@ -150,6 +150,7 @@ FilmPage.propTypes = {
     actors: PropTypes.arrayOf(
         PropTypes.string.isRequired
     ).isRequired,
+    runtime: PropTypes.number.isRequired,
   }).isRequired,
 };
 
