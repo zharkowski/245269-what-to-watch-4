@@ -16,6 +16,7 @@ export const film = {
   ],
   director: `Wes Andreson`,
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  runtime: 123,
 };
 
 describe(`Render FilmPage`, () => {
