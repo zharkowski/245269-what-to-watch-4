@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {getRatingLevel} from "../../utils/common";
+import Tabs from "../tabs/tabs.jsx";
 
 const FilmPage = (props) => {
   const {film} = props;
@@ -66,51 +67,53 @@ const FilmPage = (props) => {
                 height="327"/>
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
+            <Tabs/>
 
-              <div className="movie-rating">
-                <div className="movie-rating__score">{score}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{ratingLevel}</span>
-                  <span className="movie-rating__count">{ratingsCount} rating{ratingsCount === 1 ? `` : `s`}</span>
-                </p>
-              </div>
+            {/*<div className="movie-card__desc">*/}
+            {/*  <nav className="movie-nav movie-card__nav">*/}
+            {/*    <ul className="movie-nav__list">*/}
+            {/*      <li className="movie-nav__item movie-nav__item--active">*/}
+            {/*        <a href="#" className="movie-nav__link">Overview</a>*/}
+            {/*      </li>*/}
+            {/*      <li className="movie-nav__item">*/}
+            {/*        <a href="#" className="movie-nav__link">Details</a>*/}
+            {/*      </li>*/}
+            {/*      <li className="movie-nav__item">*/}
+            {/*        <a href="#" className="movie-nav__link">Reviews</a>*/}
+            {/*      </li>*/}
+            {/*    </ul>*/}
+            {/*  </nav>*/}
 
-              <div className="movie-card__text">
-                {descriptions.map((item, index) => {
-                  return (
-                    <p key={index}>{item}</p>
-                  );
-                })}
+            {/*  <div className="movie-rating">*/}
+            {/*    <div className="movie-rating__score">{score}</div>*/}
+            {/*    <p className="movie-rating__meta">*/}
+            {/*      <span className="movie-rating__level">{ratingLevel}</span>*/}
+            {/*      <span className="movie-rating__count">{ratingsCount} rating{ratingsCount === 1 ? `` : `s`}</span>*/}
+            {/*    </p>*/}
+            {/*  </div>*/}
 
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
+            {/*  <div className="movie-card__text">*/}
+            {/*    {descriptions.map((item, index) => {*/}
+            {/*      return (*/}
+            {/*        <p key={index}>{item}</p>*/}
+            {/*      );*/}
+            {/*    })}*/}
 
-                <p className="movie-card__starring"><strong>Starring: {actors.reduce(
-                    (acc, actor, index) => {
-                      if (index !== actors.length - 1) {
-                        return acc + actor + `, `;
-                      } else {
-                        return acc + actor;
-                      }
-                    },
-                    ``
-                )}
-                </strong></p>
-              </div>
-            </div>
+            {/*    <p className="movie-card__director"><strong>Director: {director}</strong></p>*/}
+
+            {/*    <p className="movie-card__starring"><strong>Starring: {actors.reduce(*/}
+            {/*        (acc, actor, index) => {*/}
+            {/*          if (index !== actors.length - 1) {*/}
+            {/*            return acc + actor + `, `;*/}
+            {/*          } else {*/}
+            {/*            return acc + actor;*/}
+            {/*          }*/}
+            {/*        },*/}
+            {/*        ``*/}
+            {/*    )}*/}
+            {/*    </strong></p>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
           </div>
         </div>
       </section>
