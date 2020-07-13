@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./compoents/app/app.jsx";
+import App from "./components/app/app.jsx";
 import {films} from "./mocks/films";
 
 const PromoFilm = {
