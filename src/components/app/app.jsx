@@ -22,9 +22,9 @@ class App extends React.PureComponent {
   render() {
     const {title, genre, releaseYear, films} = this.props;
     const currentFilm = this.state.currentFilm;
-    const relatedFilms = films.filter((film) => this.state.currentFilm !== null
-      ? film.genre === this.state.currentFilm.genre
-      : true);
+    const relatedFilms = this.state.currentFilm !== null
+      ? films.filter((film) => film.genre === this.state.currentFilm.genre)
+      : films;
 
     return (
       <BrowserRouter>
