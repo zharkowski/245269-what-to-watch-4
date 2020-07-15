@@ -29,7 +29,10 @@ class App extends React.PureComponent {
           <Route exact path="/">
             {currentFilm ?
               <FilmPage
-                film={currentFilm}/> :
+                film={currentFilm}
+                onFilmClick={this.handleFilmClick}
+                relatedFilms={films}
+              /> :
               <Main
                 title={title}
                 genre={genre}
@@ -40,7 +43,11 @@ class App extends React.PureComponent {
             }
           </Route>
           <Route exact path="/dev-film-page">
-            <FilmPage film={filmDetails}/>
+            <FilmPage
+              film={filmDetails}
+              onFilmClick={this.handleFilmClick}
+              relatedFilms={films}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

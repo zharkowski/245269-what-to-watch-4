@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import FilmPage from "./film-page";
+import FilmsList from "../films-list/films-list";
 
 export const film = {
   title: `The Grand Budapest Hotel`,
@@ -19,6 +20,40 @@ export const film = {
   runtime: 123,
 };
 
+const films = [{
+  title: `Fantastic Beasts: The Crimes of Grindelwald`,
+  picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Bohemian Rhapsody`,
+  picture: `img/bohemian-rhapsody.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Macbeth`,
+  picture: `img/macbeth.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Aviator`,
+  picture: `img/aviator.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `We need to talk about Kevin`,
+  picture: `img/we-need-to-talk-about-kevin.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `What We Do in the Shadows`,
+  picture: `img/what-we-do-in-the-shadows.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Revenant`,
+  picture: `img/revenant.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Shutter Island`,
+  picture: `img/shutter-island.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}];
+
 describe(`Render FilmPage`, () => {
   it(`Should FilmPage render correctly`, () => {
     const tree = renderer.create(
@@ -26,8 +61,12 @@ describe(`Render FilmPage`, () => {
           film={film}
           onHover={() => {}}
           onFilmClick={() => {}}
-        />
-    ).toJSON();
+          relatedFilms={films}
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
