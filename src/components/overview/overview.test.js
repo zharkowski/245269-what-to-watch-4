@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Overview from "./overview.jsx";
 
-export const filmDetails = {
+const filmDetails = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   releaseYear: 2014,
