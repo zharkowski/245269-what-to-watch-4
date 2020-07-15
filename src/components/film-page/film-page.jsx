@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
+import {reviews} from "../../mocks/reviews";
 
 const FilmPage = (props) => {
   const {film} = props;
@@ -67,6 +68,7 @@ const FilmPage = (props) => {
 
             <Tabs
               film={film}
+              reviews={reviews}
             />
 
           </div>

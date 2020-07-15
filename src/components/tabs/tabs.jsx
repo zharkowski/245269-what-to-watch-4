@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import {Tab} from "../../constants";
 import Overview from "../overview/overview.jsx";
 import Details from "../details/details.jsx";
+import Reviews from "../reviews/reviews.jsx";
 
 class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: Tab.DETAILS,
+      activeTab: Tab.REVIEWS,
     };
 
     this._getHandleTabClick = this._getHandleTabClick.bind(this);
@@ -22,7 +23,7 @@ class Tabs extends React.PureComponent {
   }
 
   _getComponentByTab(tab) {
-    const {film} = this.props;
+    const {film, reviews} = this.props;
     const {actors, genre, releaseYear, descriptions, director, ratingsCount, score, runtime} = film;
     switch (tab) {
       case Tab.OVERVIEW:
@@ -43,7 +44,9 @@ class Tabs extends React.PureComponent {
             runtime={runtime}
           />);
       case Tab.REVIEWS:
-        return <>reviews</>;
+        return <Reviews
+          reviews={reviews}
+        />;
       default:
         return null;
     }
@@ -94,6 +97,14 @@ Tabs.propTypes = {
     ).isRequired,
     runtime: PropTypes.number.isRequired,
   }).isRequired,
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        userName: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        comment: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
+      }).isRequired
+  ).isRequired,
 };
 
 export default Tabs;
