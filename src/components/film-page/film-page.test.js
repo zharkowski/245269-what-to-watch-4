@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import FilmPage from "./film-page";
-import FilmsList from "../films-list/films-list";
 
 export const film = {
   title: `The Grand Budapest Hotel`,
