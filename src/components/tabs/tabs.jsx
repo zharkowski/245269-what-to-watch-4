@@ -9,7 +9,7 @@ class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: Tab.REVIEWS,
+      activeTab: Tab.OVERVIEW,
     };
 
     this._getHandleTabClick = this._getHandleTabClick.bind(this);

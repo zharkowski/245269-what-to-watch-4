@@ -4,11 +4,12 @@ import {getRatingLevel} from "../../utils/common";
 
 const Overview = (props) => {
   const {score, ratingsCount, descriptions, director, actors} = props;
+  const formattedScore = `${Math.floor(score)},${Math.round((score - Math.floor(score)) * 10)}`;
   const ratingLevel = getRatingLevel(score);
   return (
     <>
       <div className="movie-rating">
-        <div className="movie-rating__score">{score}</div>
+        <div className="movie-rating__score">{formattedScore}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{ratingLevel}</span>
           <span className="movie-rating__count">{ratingsCount} rating{ratingsCount === 1 ? `` : `s`}</span>
