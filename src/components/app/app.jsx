@@ -22,6 +22,9 @@ class App extends React.PureComponent {
   render() {
     const {title, genre, releaseYear, films} = this.props;
     const currentFilm = this.state.currentFilm;
+    const relatedFilms = this.state.currentFilm !== null
+      ? films.filter((film) => film.genre === this.state.currentFilm.genre)
+      : films;
 
     return (
       <BrowserRouter>
@@ -29,7 +32,10 @@ class App extends React.PureComponent {
           <Route exact path="/">
             {currentFilm ?
               <FilmPage
-                film={currentFilm}/> :
+                film={currentFilm}
+                onFilmClick={this.handleFilmClick}
+                relatedFilms={relatedFilms}
+              /> :
               <Main
                 title={title}
                 genre={genre}
@@ -40,7 +46,11 @@ class App extends React.PureComponent {
             }
           </Route>
           <Route exact path="/dev-film-page">
-            <FilmPage film={filmDetails}/>
+            <FilmPage
+              film={filmDetails}
+              onFilmClick={this.handleFilmClick}
+              relatedFilms={relatedFilms}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

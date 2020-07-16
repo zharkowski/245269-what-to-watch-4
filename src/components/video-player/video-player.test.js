@@ -8,8 +8,8 @@ const film = {
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
-describe(`Render FilmsList`, () => {
-  it(`Should FilmsList render correctly`, () => {
+describe(`Render VideoPlayer`, () => {
+  it(`Should VideoPlayer render correctly`, () => {
     const tree = renderer.create(
         <VideoPlayer
           isPlaying={false}
