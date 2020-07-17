@@ -10,13 +10,8 @@ const Details = (props) => {
         {actorNames.map((actor, index) => {
           return (
             <React.Fragment key={index}>
-              {actor}
-              {index !== actors.length - 1
-                ? <React.Fragment>
-                  {`, `}
-                  <br/>
-                </React.Fragment>
-                : ``}
+              {`${actor}${index !== actors.length - 1 ? `, ` : ``}`}
+              <br />
             </React.Fragment>
           );
         })}
