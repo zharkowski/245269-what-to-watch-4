@@ -25,10 +25,6 @@ const ActionCreator = {
           payload: films.filter((film) => film.genre === genre),
         };
     }
-    return {
-      type: ActionType.GET_FILMS_BY_GENRE,
-      payload: genre
-    };
   },
 };
 
