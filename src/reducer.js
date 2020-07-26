@@ -1,9 +1,9 @@
-import {ActionType, Genre} from "./constants";
+import {ActionType, ALL_GENRES} from "./constants";
 import {films} from "./mocks/films";
 import {extend} from "./utils";
 
 const InitialState = {
-  genre: Genre.ALL,
+  genre: ALL_GENRES,
   films,
 };
 
@@ -14,7 +14,7 @@ const ActionCreator = {
   }),
   getFilmsByGenre: (genre) => {
     switch (genre) {
-      case Genre.ALL:
+      case ALL_GENRES:
         return {
           type: ActionType.GET_FILMS_BY_GENRE,
           payload: films,

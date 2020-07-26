@@ -17,6 +17,7 @@ export const Tab = {
   REVIEWS: `reviews`,
 };
 export const MINUTES_IN_HOUR = 60;
+export const ALL_GENRES = `All genres`;
 export const Genre = {
   ALL: `all`,
   COMEDIES: `comedies`,
