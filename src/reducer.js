@@ -31,9 +31,13 @@ const ActionCreator = {
 const reducer = (state = InitialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE_FILTER:
-      return extend(state, action.payload);
+      return extend(state, {
+        genre: action.payload,
+      });
     case ActionType.GET_FILMS_BY_GENRE:
-      return extend(state, action.payload);
+      return extend(state, {
+        films: action.payload,
+      });
     default:
       return state;
   }
