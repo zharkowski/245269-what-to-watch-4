@@ -7,7 +7,7 @@ import {getGenresFromFilms} from "../../utils";
 
 const Main = (props) => {
   const {title, genre, releaseYear, films, onFilmClick} = props;
-  const genres = getGenresFromFilms(films);
+  const genres = getGenresFromFilms(films).slice(0, 9);
   return (
     <>
       <section className="movie-card">
