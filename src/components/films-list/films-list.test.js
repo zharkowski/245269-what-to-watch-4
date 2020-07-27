@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmsList from "./films-list.jsx";
+import {FilmsList} from "./films-list.jsx";
 
 const films = [{
   title: `Fantastic Beasts: The Crimes of Grindelwald`,

@@ -1,6 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
+import configurateStore from "redux-mock-store";
+import {ALL_GENRES} from "../../constants";
+import {getGenresFromFilms} from "../../utils";
+import {Provider} from "react-redux";
+
+const mockStore = configurateStore([]);
 
 const films = [{
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -46,17 +52,19 @@ const films = [{
 
 describe(`Render App`, () => {
   it(`Should App render correctly`, function () {
+    const store = mockStore({
+      activeGenre: ALL_GENRES,
+      genres: getGenresFromFilms(films),
+    });
     const tree = renderer.create(
-        <App
-          title={`The Grand Budapest Hotel`}
-          genre={`Drama`}
-          releaseYear={2014}
-          films={films}
-        />, {
-          createNodeMock: () => {
-            return {};
-          }
-        }).toJSON();
+        <Provider store={store}>
+          <App
+            title={`The Grand Budapest Hotel`}
+            genre={`Drama`}
+            releaseYear={2014}
+            films={films}
+          />
+        </Provider>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
