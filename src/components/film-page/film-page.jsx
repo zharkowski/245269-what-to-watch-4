@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import {reviews} from "../../mocks/reviews";
-import FilmsList from "../films-list/films-list.jsx";
+import {FilmsList} from "../films-list/films-list.jsx";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;

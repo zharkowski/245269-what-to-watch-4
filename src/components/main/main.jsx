@@ -2,11 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import FilmsList from "../films-list/films-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
-import {ALL_GENRES, Genre} from "../../constants";
+import {ALL_GENRES} from "../../constants";
+import {getGenresFromFilms} from "../../utils";
 
 const Main = (props) => {
   const {title, genre, releaseYear, films, onFilmClick} = props;
-  const genres = Object.values(Genre);
+  const genres = getGenresFromFilms(films);
   return (
     <>
       <section className="movie-card">
