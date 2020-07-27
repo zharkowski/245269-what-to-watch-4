@@ -19,7 +19,6 @@ export const Tab = {
 export const MINUTES_IN_HOUR = 60;
 export const ALL_GENRES = `All genres`;
 export const Genre = {
-  ALL: `all`,
   COMEDIES: `comedies`,
   CRIME: `crime`,
   DOCUMENTARY: `documentary`,

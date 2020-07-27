@@ -13,7 +13,7 @@ const GenresList = (props) => {
   return (
     <ul className="catalog__genres-list">
       <li className={`catalog__genres-item ${activeGenre === ALL_GENRES ? `catalog__genres-item--active` : ``}`}>
-        <a href="#" className="catalog__genres-link">All genres</a>
+        <a href="#" className="catalog__genres-link" onClick={getGenreHandler(ALL_GENRES)}>All genres</a>
       </li>
       {genres.map((genre, i) => (
         <li key={i} className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`}>
