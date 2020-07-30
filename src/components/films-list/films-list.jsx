@@ -28,10 +28,10 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, showingFilmsCount} = this.props;
     return (
       <div className="catalog__movies-list">
-        {films.map((film, index) => {
+        {films.slice(0, showingFilmsCount).map((film, index) => {
           const isActive = this.state.activeFilm === film;
           return (
             <FilmCard
@@ -57,10 +57,12 @@ FilmsList.propTypes = {
       }).isRequired
   ).isRequired,
   onFilmClick: PropTypes.func.isRequired,
+  showingFilmsCount: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  films: state.films
+  films: state.films,
+  showingFilmsCount: state.showingFilmsCount
 });
 
 export {FilmsList};

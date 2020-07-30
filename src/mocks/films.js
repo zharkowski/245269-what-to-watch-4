@@ -34,6 +34,26 @@ export const films = [{
   picture: `img/revenant.jpg`,
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
+  title: `No Country for Old Men`,
+  genre: `Comedy`,
+  picture: `img/no-country-for-old-men.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Pulp Fiction`,
+  genre: `Action`,
+  picture: `img/pulp-fiction.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `War of the Worlds`,
+  genre: `Horror`,
+  picture: `img/war-of-the-worlds.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Snatch`,
+  genre: `Comedy`,
+  picture: `img/snatch.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
   title: `Shutter Island`,
   genre: `Comedy`,
   picture: `img/shutter-island.jpg`,

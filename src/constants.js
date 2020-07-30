@@ -18,18 +18,10 @@ export const Tab = {
 };
 export const MINUTES_IN_HOUR = 60;
 export const ALL_GENRES = `All genres`;
-export const Genre = {
-  COMEDIES: `comedies`,
-  CRIME: `crime`,
-  DOCUMENTARY: `documentary`,
-  DRAMAS: `dramas`,
-  HORROR: `horror`,
-  KIDS_AND_FAMILY: `kidsAndFamily`,
-  ROMANCE: `romance`,
-  SCI_FI: `sci-fi`,
-  THRILLERS: `thrillers`,
-};
 export const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
+  INCREASE_SHOWING_FILMS_COUNT: `INCREASE_SHOWING_FILMS_COUNT`,
+  SET_DEFAULT_SHOWING_FILMS_COUNT: `SET_DEFAULT_SHOWING_FILMS_COUNT`,
 };
+export const DEFAULT_SHOWING_FILMS_COUNT = 8;
