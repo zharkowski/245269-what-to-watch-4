@@ -14,3 +14,4 @@ export const getGenresFromFilms = (films) => {
   const sortedGenres = new Map([...genres.entries()].sort((a, b) => b[1] - a[1]));
   return Array.from(sortedGenres.keys());
 };
+export const filterFilmsByGenre = (films, genre) => films.filter((film) => film.genre === genre);

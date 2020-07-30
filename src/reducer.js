@@ -1,6 +1,6 @@
 import {ActionType, ALL_GENRES} from "./constants";
 import {films} from "./mocks/films";
-import {extend} from "./utils";
+import {extend, filterFilmsByGenre} from "./utils";
 
 const InitialState = {
   genre: ALL_GENRES,
@@ -22,7 +22,7 @@ const ActionCreator = {
       default:
         return {
           type: ActionType.GET_FILMS_BY_GENRE,
-          payload: films.filter((film) => film.genre === genre),
+          payload: filterFilmsByGenre(films, genre),
         };
     }
   },
