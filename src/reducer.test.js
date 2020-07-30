@@ -87,6 +87,36 @@ describe(`Reducer working`, () => {
     });
   });
 
+  it(`should increase showing films count`, () => {
+    expect(reducer({
+      genre: ALL_GENRES,
+      films,
+      showingFilmsCount: 10,
+    }, {
+      type: ActionType.INCREASE_SHOWING_FILMS_COUNT,
+      payload: 5,
+    })).toEqual({
+      genre: ALL_GENRES,
+      films,
+      showingFilmsCount: 15,
+    });
+  });
+
+  it(`should set default showing films count`, () => {
+    expect(reducer({
+      genre: ALL_GENRES,
+      films,
+      showingFilmsCount: 10,
+    }, {
+      type: ActionType.SET_DEFAULT_SHOWING_FILMS_COUNT,
+      payload: 5,
+    })).toEqual({
+      genre: ALL_GENRES,
+      films,
+      showingFilmsCount: 5,
+    });
+  });
+
   it(`should change films`, () => {
     expect(reducer({
       genre: ALL_GENRES,
@@ -112,7 +142,7 @@ describe(`Reducer working`, () => {
 });
 
 describe(`Action creators work correctly`, () => {
-  it(`Action creator for change genre returns correct action`, () => {
+  it(`Action creator for changing genre returns correct action`, () => {
     expect(ActionCreator.changeGenreFilter(`Action`)).toEqual({
       type: ActionType.CHANGE_GENRE_FILTER,
       payload: `Action`,
@@ -143,6 +173,20 @@ describe(`Action creators work correctly`, () => {
         picture: `img/shutter-island.jpg`,
         src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       }],
+    });
+  });
+
+  it(`Action creator for increasing showing films count returns correct action`, () => {
+    expect(ActionCreator.increaseShowingFilmsCount()).toEqual({
+      type: ActionType.INCREASE_SHOWING_FILMS_COUNT,
+      payload: DEFAULT_SHOWING_FILMS_COUNT,
+    });
+  });
+
+  it(`Action creator for setting default showing films count returns correct action`, () => {
+    expect(ActionCreator.setDefaultShowingFilmsCount()).toEqual({
+      type: ActionType.SET_DEFAULT_SHOWING_FILMS_COUNT,
+      payload: DEFAULT_SHOWING_FILMS_COUNT,
     });
   });
 });
