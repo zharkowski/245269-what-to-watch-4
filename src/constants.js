@@ -25,4 +25,5 @@ export const ActionType = {
   SET_DEFAULT_SHOWING_FILMS_COUNT: `SET_DEFAULT_SHOWING_FILMS_COUNT`,
 };
 export const DEFAULT_SHOWING_FILMS_COUNT = 8;
+export const MORE_LIKE_THIS_FILMS_COUNT = 4;
 export const MAX_GENRES_COUNT = 9;

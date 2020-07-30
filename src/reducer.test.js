@@ -1,5 +1,5 @@
 import {reducer, ActionCreator} from "./reducer";
-import {ActionType} from "./constants";
+import {ActionType, DEFAULT_SHOWING_FILMS_COUNT} from "./constants";
 import {ALL_GENRES} from "./constants";
 import {filterFilmsByGenre} from "./utils";
 
@@ -39,6 +39,26 @@ const films = [{
   picture: `img/revenant.jpg`,
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
+  title: `No Country for Old Men`,
+  genre: `Comedy`,
+  picture: `img/no-country-for-old-men.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Pulp Fiction`,
+  genre: `Action`,
+  picture: `img/pulp-fiction.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `War of the Worlds`,
+  genre: `Horror`,
+  picture: `img/war-of-the-worlds.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
+  title: `Snatch`,
+  genre: `Comedy`,
+  picture: `img/snatch.jpg`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+}, {
   title: `Shutter Island`,
   genre: `Comedy`,
   picture: `img/shutter-island.jpg`,
@@ -50,6 +70,7 @@ describe(`Reducer working`, () => {
     expect(reducer(void 0, {})).toEqual({
       genre: ALL_GENRES,
       films,
+      showingFilmsCount: DEFAULT_SHOWING_FILMS_COUNT,
     });
   });
 
@@ -80,6 +101,11 @@ describe(`Reducer working`, () => {
         genre: `Horror`,
         picture: `img/what-we-do-in-the-shadows.jpg`,
         src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+      }, {
+        title: `War of the Worlds`,
+        genre: `Horror`,
+        picture: `img/war-of-the-worlds.jpg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       }],
     });
   });
@@ -100,6 +126,16 @@ describe(`Action creators work correctly`, () => {
         title: `Revenant`,
         genre: `Comedy`,
         picture: `img/revenant.jpg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+      }, {
+        title: `No Country for Old Men`,
+        genre: `Comedy`,
+        picture: `img/no-country-for-old-men.jpg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+      }, {
+        title: `Snatch`,
+        genre: `Comedy`,
+        picture: `img/snatch.jpg`,
         src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       }, {
         title: `Shutter Island`,
