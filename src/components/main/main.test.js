@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 import configurateStore from "redux-mock-store";
 import {ALL_GENRES} from "../../constants";
-import {getGenresFromFilms} from "../../utils";
 import {Provider} from "react-redux";
 
 const mockStore = configurateStore([]);
@@ -53,8 +52,8 @@ const films = [{
 describe(`Render Main`, () => {
   it(`Should WelcomeScreen render correctly`, () => {
     const store = mockStore({
-      activeGenre: ALL_GENRES,
-      genres: getGenresFromFilms(films),
+      genre: ALL_GENRES,
+      films,
     });
     const tree = renderer.create(
         <Provider store={store}>

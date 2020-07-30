@@ -4,7 +4,6 @@ import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
 import configurateStore from "redux-mock-store";
 import {ALL_GENRES} from "../../constants";
-import {getGenresFromFilms} from "../../utils";
 import {Provider} from "react-redux";
 
 const mockStore = configurateStore([]);
@@ -62,8 +61,8 @@ const mockEvent = {
 describe(`Main e2e test`, () => {
   it(`Should film title be pressed`, () => {
     const store = mockStore({
-      activeGenre: ALL_GENRES,
-      genres: getGenresFromFilms(films),
+      genre: ALL_GENRES,
+      films,
     });
     const onFilmClick = jest.fn();
     const main = mount(
@@ -87,8 +86,8 @@ describe(`Main e2e test`, () => {
   it(`Should film image be pressed`, () => {
     const onFilmClick = jest.fn();
     const store = mockStore({
-      activeGenre: ALL_GENRES,
-      genres: getGenresFromFilms(films),
+      genre: ALL_GENRES,
+      films,
     });
     const main = mount(
         <Provider store={store}>

@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import App from "./app.jsx";
 import configurateStore from "redux-mock-store";
 import {ALL_GENRES} from "../../constants";
-import {getGenresFromFilms} from "../../utils";
 import {Provider} from "react-redux";
 
 const mockStore = configurateStore([]);
@@ -53,8 +52,8 @@ const films = [{
 describe(`Render App`, () => {
   it(`Should App render correctly`, function () {
     const store = mockStore({
-      activeGenre: ALL_GENRES,
-      genres: getGenresFromFilms(films),
+      genre: ALL_GENRES,
+      films,
     });
     const tree = renderer.create(
         <Provider store={store}>
@@ -64,7 +63,11 @@ describe(`Render App`, () => {
             releaseYear={2014}
             films={films}
           />
-        </Provider>).toJSON();
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
