@@ -25,3 +25,4 @@ export const ActionType = {
   SET_DEFAULT_SHOWING_FILMS_COUNT: `SET_DEFAULT_SHOWING_FILMS_COUNT`,
 };
 export const DEFAULT_SHOWING_FILMS_COUNT = 8;
+export const MAX_GENRES_COUNT = 9;

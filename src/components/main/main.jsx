@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
-import {ALL_GENRES} from "../../constants";
+import ShowMore from "../show-more/show-more.jsx";
 import {getGenresFromFilms} from "../../utils";
+import {MAX_GENRES_COUNT} from "../../constants";
 
 const Main = (props) => {
-  const {title, genre, releaseYear, films, onFilmClick} = props;
-  const genres = getGenresFromFilms(films).slice(0, 9);
+  const {title, genre, releaseYear, films, onFilmClick, currentGenreFilmsCount, showingFilmsCount} = props;
+  const genres = getGenresFromFilms(films).slice(0, MAX_GENRES_COUNT);
   return (
     <>
       <section className="movie-card">
@@ -70,15 +72,11 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList
-            genres={genres}
-          />
+          <GenresList genres={genres}/>
 
-          <FilmsList films={films} onFilmClick={onFilmClick}/>
+          <FilmsList onFilmClick={onFilmClick}/>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {showingFilmsCount < currentGenreFilmsCount ? <ShowMore/> : ``}
         </section>
 
         <footer className="page-footer">
@@ -110,6 +108,14 @@ Main.propTypes = {
       }).isRequired
   ).isRequired,
   onFilmClick: PropTypes.func.isRequired,
+  currentGenreFilmsCount: PropTypes.number.isRequired,
+  showingFilmsCount: PropTypes.number.isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  currentGenreFilmsCount: state.films.length,
+  showingFilmsCount: state.showingFilmsCount,
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);
