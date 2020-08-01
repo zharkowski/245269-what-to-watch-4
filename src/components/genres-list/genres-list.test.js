@@ -1,9 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import GenresList from "./genres-list.jsx";
 import configurateStore from "redux-mock-store";
 import {ALL_GENRES} from "../../constants";
 import {Provider} from "react-redux";
+import {getGenresFromFilms} from "../../utils";
 
 const mockStore = configurateStore([]);
 
@@ -39,7 +40,7 @@ const films = [{
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
   title: `Revenant`,
-  genre: `Drama`,
+  genre: `Comedy`,
   picture: `img/revenant.jpg`,
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }, {
@@ -49,19 +50,16 @@ const films = [{
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }];
 
-describe(`Render App`, () => {
-  it(`Should App render correctly`, function () {
+describe(`Render GenresList`, () => {
+  it(`Should GenresList render correctly`, () => {
     const store = mockStore({
       genre: ALL_GENRES,
       films,
     });
     const tree = renderer.create(
         <Provider store={store}>
-          <App
-            title={`The Grand Budapest Hotel`}
-            genre={`Drama`}
-            releaseYear={2014}
-            films={films}
+          <GenresList
+            genres={getGenresFromFilms(films)}
           />
         </Provider>, {
           createNodeMock: () => {

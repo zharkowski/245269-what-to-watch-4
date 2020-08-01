@@ -6,6 +6,17 @@ const Overview = (props) => {
   const {score, ratingsCount, descriptions, director, actors} = props;
   const formattedScore = `${Math.floor(score)},${Math.round((score - Math.floor(score)) * 10)}`;
   const ratingLevel = getRatingLevel(score);
+  const renderStarring = (starringActors) => starringActors.reduce(
+      (acc, actor, index) => {
+        if (index !== actors.length - 1) {
+          return acc + actor + `, `;
+        } else {
+          return acc + actor;
+        }
+      },
+      ``
+  );
+
   return (
     <>
       <div className="movie-rating">
@@ -25,16 +36,7 @@ const Overview = (props) => {
 
         <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-        <p className="movie-card__starring"><strong>Starring: {actors.reduce(
-            (acc, actor, index) => {
-              if (index !== actors.length - 1) {
-                return acc + actor + `, `;
-              } else {
-                return acc + actor;
-              }
-            },
-            ``
-        )}
+        <p className="movie-card__starring"><strong>Starring: {renderStarring(actors)}
         </strong></p>
       </div>
     </>
