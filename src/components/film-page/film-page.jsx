@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import {reviews} from "../../mocks/reviews";
 import {FilmsList} from "../films-list/films-list.jsx";
+import {MORE_LIKE_THIS_FILMS_COUNT} from "../../constants";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;
@@ -82,6 +83,7 @@ const FilmPage = (props) => {
           <FilmsList
             films={relatedFilms.slice(0, 4)}
             onFilmClick={onFilmClick}
+            showingFilmsCount={MORE_LIKE_THIS_FILMS_COUNT}
           />
         </section>
 

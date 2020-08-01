@@ -1,8 +1,9 @@
-import {ActionType, ALL_GENRES} from "./constants";
+import {ActionType, ALL_GENRES, DEFAULT_SHOWING_FILMS_COUNT} from "./constants";
 import {films} from "./mocks/films";
 import {extend, filterFilmsByGenre} from "./utils";
 
 const InitialState = {
+  showingFilmsCount: DEFAULT_SHOWING_FILMS_COUNT,
   genre: ALL_GENRES,
   films,
 };
@@ -26,6 +27,14 @@ const ActionCreator = {
         };
     }
   },
+  increaseShowingFilmsCount: () => ({
+    type: ActionType.INCREASE_SHOWING_FILMS_COUNT,
+    payload: DEFAULT_SHOWING_FILMS_COUNT,
+  }),
+  setDefaultShowingFilmsCount: () => ({
+    type: ActionType.SET_DEFAULT_SHOWING_FILMS_COUNT,
+    payload: DEFAULT_SHOWING_FILMS_COUNT,
+  }),
 };
 
 const reducer = (state = InitialState, action) => {
@@ -37,6 +46,14 @@ const reducer = (state = InitialState, action) => {
     case ActionType.GET_FILMS_BY_GENRE:
       return extend(state, {
         films: action.payload,
+      });
+    case ActionType.INCREASE_SHOWING_FILMS_COUNT:
+      return extend(state, {
+        showingFilmsCount: state.showingFilmsCount + action.payload,
+      });
+    case ActionType.SET_DEFAULT_SHOWING_FILMS_COUNT:
+      return extend(state, {
+        showingFilmsCount: action.payload,
       });
     default:
       return state;

@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {FilmsList} from "./films-list.jsx";
+import {DEFAULT_SHOWING_FILMS_COUNT} from "../../constants";
 
 const films = [{
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -42,6 +43,7 @@ describe(`Render FilmsList`, () => {
         <FilmsList
           films={films}
           onFilmClick={() => {}}
+          showingFilmsCount={DEFAULT_SHOWING_FILMS_COUNT}
         />, {
           createNodeMock: () => {
             return {};

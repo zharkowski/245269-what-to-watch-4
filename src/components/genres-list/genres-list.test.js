@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import GenresList from "./genres-list.jsx";
 import configurateStore from "redux-mock-store";
-import {ALL_GENRES} from "../../constants";
+import {ALL_GENRES, DEFAULT_SHOWING_FILMS_COUNT} from "../../constants";
 import {Provider} from "react-redux";
 import {getGenresFromFilms} from "../../utils";
 
@@ -53,6 +53,7 @@ const films = [{
 describe(`Render GenresList`, () => {
   it(`Should GenresList render correctly`, () => {
     const store = mockStore({
+      showingFilmsCount: DEFAULT_SHOWING_FILMS_COUNT,
       genre: ALL_GENRES,
       films,
     });

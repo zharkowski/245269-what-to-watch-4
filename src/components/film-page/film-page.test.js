@@ -1,6 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import configurateStore from "redux-mock-store";
+import {Provider} from "react-redux";
 import FilmPage from "./film-page";
+import {ALL_GENRES, DEFAULT_SHOWING_FILMS_COUNT} from "../../constants";
 
 export const film = {
   title: `The Grand Budapest Hotel`,
@@ -61,15 +64,24 @@ const films = [{
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }];
 
+const mockStore = configurateStore([]);
+
 describe(`Render FilmPage`, () => {
   it(`Should FilmPage render correctly`, () => {
+    const store = mockStore({
+      showingFilmsCount: DEFAULT_SHOWING_FILMS_COUNT,
+      genre: ALL_GENRES,
+      films,
+    });
     const tree = renderer.create(
-        <FilmPage
-          film={film}
-          onHover={() => {}}
-          onFilmClick={() => {}}
-          relatedFilms={films}
-        />, {
+        <Provider store={store}>
+          <FilmPage
+            film={film}
+            onHover={() => {}}
+            onFilmClick={() => {}}
+            relatedFilms={films}
+          />
+        </Provider>, {
           createNodeMock: () => {
             return {};
           }
