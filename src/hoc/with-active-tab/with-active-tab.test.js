@@ -71,7 +71,7 @@ MockComponent.propTypes = {
 
 const MockComponentWithAudio = withActiveTab(MockComponent);
 
-it(`withActiveFilm is rendered correctly`, () => {
+it(`withActiveTab is rendered correctly`, () => {
   const tree = renderer.create((
     <MockComponentWithAudio
       film={film}
