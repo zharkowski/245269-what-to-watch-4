@@ -5,46 +5,46 @@ import Main from "../main/main.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import {filmDetails} from "../../mocks/films";
 
-class App extends React.PureComponent {
-  render() {
-    const {promoFilm, films, activeFilm, changeActiveFilm} = this.props;
-    const relatedFilms = activeFilm
-      ? films.filter((film) => film.genre === activeFilm.genre)
-      : films;
+const App = React.memo((props) => {
+  const {promoFilm, films, activeFilm, changeActiveFilm} = props;
+  const relatedFilms = activeFilm
+    ? films.filter((film) => film.genre === activeFilm.genre)
+    : films;
 
-    const onFilmClick = () => {
-      changeActiveFilm(filmDetails);
-    };
+  const onFilmClick = () => {
+    changeActiveFilm(filmDetails);
+  };
 
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            {activeFilm ?
-              <FilmPage
-                film={activeFilm}
-                onFilmClick={onFilmClick}
-                relatedFilms={relatedFilms}
-              /> :
-              <Main
-                promoFilm={promoFilm}
-                films={films}
-                onFilmClick={onFilmClick}
-              />
-            }
-          </Route>
-          <Route exact path="/dev-film-page">
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {activeFilm ?
             <FilmPage
-              film={filmDetails}
+              film={activeFilm}
               onFilmClick={onFilmClick}
               relatedFilms={relatedFilms}
+            /> :
+            <Main
+              promoFilm={promoFilm}
+              films={films}
+              onFilmClick={onFilmClick}
             />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
+          }
+        </Route>
+        <Route exact path="/dev-film-page">
+          <FilmPage
+            film={filmDetails}
+            onFilmClick={onFilmClick}
+            relatedFilms={relatedFilms}
+          />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+});
+
+App.displayName = `App`;
 
 App.propTypes = {
   promoFilm: PropTypes.shape({
