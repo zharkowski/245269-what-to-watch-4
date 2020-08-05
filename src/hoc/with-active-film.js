@@ -7,27 +7,25 @@ const withActiveFilm = (Component) => {
     constructor(props) {
       super(props);
       this.state = {
-        currentFilm: null,
+        activeFilm: null,
       };
 
       this.handleFilmClick = this.handleFilmClick.bind(this);
     }
 
     handleFilmClick() {
-      this.setState({currentFilm: filmDetails});
+      this.setState({activeFilm: filmDetails});
     }
 
     render() {
-      const {title, genre, releaseYear, films} = this.props;
-      const {currentFilm} = this.state;
+      const {promoFilm, films} = this.props;
+      const {activeFilm} = this.state;
       return (
         <Component
           {...this.props}
-          title={title}
-          genre={genre}
-          releaseYear={releaseYear}
+          promoFilm={promoFilm}
           films={films}
-          currentFilm={currentFilm}
+          activeFilm={activeFilm}
           onFilmClick={this.handleFilmClick}
         />
       );
@@ -35,9 +33,12 @@ const withActiveFilm = (Component) => {
   }
 
   WithActiveFilm.propTypes = {
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
+    promoFilm: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      picture: PropTypes.string.isRequired,
+      releaseYear: PropTypes.number.isRequired,
+    }).isRequired,
     films: PropTypes.arrayOf(
         PropTypes.shape({
           title: PropTypes.string.isRequired,

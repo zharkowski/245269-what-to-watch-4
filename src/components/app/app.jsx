@@ -7,25 +7,23 @@ import {filmDetails} from "../../mocks/films";
 
 class App extends React.PureComponent {
   render() {
-    const {title, genre, releaseYear, films, currentFilm, onFilmClick} = this.props;
-    const relatedFilms = currentFilm !== null
-      ? films.filter((film) => film.genre === genre)
+    const {promoFilm, films, activeFilm, onFilmClick} = this.props;
+    const relatedFilms = activeFilm
+      ? films.filter((film) => film.genre === activeFilm.genre)
       : films;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {currentFilm ?
+            {activeFilm ?
               <FilmPage
-                film={currentFilm}
+                film={activeFilm}
                 onFilmClick={onFilmClick}
                 relatedFilms={relatedFilms}
               /> :
               <Main
-                title={title}
-                genre={genre}
-                releaseYear={releaseYear}
+                promoFilm={promoFilm}
                 films={films}
                 onFilmClick={onFilmClick}
               />
@@ -45,18 +43,22 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
+  promoFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+  }).isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         picture: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
-  currentFilm: PropTypes.shape({
+  activeFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
   }),
   onFilmClick: PropTypes.func.isRequired,
 };

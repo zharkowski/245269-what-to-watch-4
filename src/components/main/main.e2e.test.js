@@ -3,7 +3,7 @@ import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
 import configurateStore from "redux-mock-store";
-import {ALL_GENRES} from "../../constants";
+import {ALL_GENRES, DEFAULT_SHOWING_FILMS_COUNT} from "../../constants";
 import {Provider} from "react-redux";
 
 const mockStore = configurateStore([]);
@@ -58,9 +58,18 @@ const mockEvent = {
   preventDefault() {}
 };
 
+const mockPromoFilm = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  releaseYear: 2014,
+  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
+  picture: `img/the-grand-budapest-hotel-poster.jpg`,
+};
+
 describe(`Main e2e test`, () => {
   it(`Should film title be pressed`, () => {
     const store = mockStore({
+      showingFilmsCount: DEFAULT_SHOWING_FILMS_COUNT,
       genre: ALL_GENRES,
       films,
     });
@@ -68,8 +77,7 @@ describe(`Main e2e test`, () => {
     const main = mount(
         <Provider store={store}>
           <Main
-            title={`The Grand Budapest Hotel`}
-            genre={`Drama`}
+            promoFilm={mockPromoFilm}
             releaseYear={2014}
             films={films}
             onFilmClick={onFilmClick}
@@ -86,14 +94,14 @@ describe(`Main e2e test`, () => {
   it(`Should film image be pressed`, () => {
     const onFilmClick = jest.fn();
     const store = mockStore({
+      showingFilmsCount: DEFAULT_SHOWING_FILMS_COUNT,
       genre: ALL_GENRES,
       films,
     });
     const main = mount(
         <Provider store={store}>
           <Main
-            title={`The Grand Budapest Hotel`}
-            genre={`Drama`}
+            promoFilm={mockPromoFilm}
             releaseYear={2014}
             films={films}
             onFilmClick={onFilmClick}

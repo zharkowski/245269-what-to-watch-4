@@ -76,3 +76,9 @@ export const filmDetails = {
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   runtime: 109,
 };
+
+export const promoFilm = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  releaseYear: 2014,
+};

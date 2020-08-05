@@ -6,12 +6,7 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import {reducer} from "./reducer";
 import withActiveFilm from "./hoc/with-active-film";
-
-const PromoFilm = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseYear: 2014,
-};
+import {filmDetails} from "./mocks/films";
 
 const store = createStore(
     reducer,
@@ -25,9 +20,7 @@ ReactDOM.render(
       store={store}
     >
       <AppWithActiveFilm
-        title={PromoFilm.title}
-        genre={PromoFilm.genre}
-        releaseYear={PromoFilm.releaseYear}
+        promoFilm={filmDetails}
         films={films}
       />
     </Provider>,
