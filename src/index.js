@@ -5,7 +5,7 @@ import {films} from "./mocks/films";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import {reducer} from "./reducer";
-import withActiveFilm from "./hoc/with-active-film";
+import withActiveFilm from "./hoc/with-active-film/with-active-film";
 import {filmDetails} from "./mocks/films";
 
 const store = createStore(

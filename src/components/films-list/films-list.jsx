@@ -4,42 +4,28 @@ import FilmCard from "../film-card/film-card.jsx";
 import {connect} from "react-redux";
 
 class FilmsList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeFilm: null,
-    };
-
-    this._handleFilmCardHover = this._handleFilmCardHover.bind(this);
-    this._handlerFilmCardLeave = this._handlerFilmCardLeave.bind(this);
-    this._handleFilmClick = this._handleFilmClick.bind(this);
-  }
-
-  _handleFilmCardHover(film) {
-    this.setState({activeFilm: film});
-  }
-
-  _handlerFilmCardLeave() {
-    this.setState({activeFilm: null});
-  }
-
-  _handleFilmClick(film) {
-    this.props.onFilmClick(film);
-  }
-
   render() {
-    const {films, showingFilmsCount} = this.props;
+    const {films, showingFilmsCount, onFilmClick, changeActiveFilm, activeFilm} = this.props;
+    const onFilmCardHover = (film) => {
+      changeActiveFilm(film);
+    };
+    const onFilmCardLeave = () => {
+      changeActiveFilm(null);
+    };
+    const filmClickHandler = (film) => {
+      onFilmClick(film);
+    };
     return (
       <div className="catalog__movies-list">
         {films.slice(0, showingFilmsCount).map((film, index) => {
-          const isActive = this.state.activeFilm === film;
+          const isActive = activeFilm === film;
           return (
             <FilmCard
               key={`${index}-${film.title}`}
               film={film}
-              onHover={this._handleFilmCardHover}
-              onFilmCardLeave={this._handlerFilmCardLeave}
-              onFilmClick={this._handleFilmClick}
+              onHover={onFilmCardHover}
+              onFilmCardLeave={onFilmCardLeave}
+              onFilmClick={filmClickHandler}
               isPlaying={isActive}
             />);
         })
@@ -58,6 +44,11 @@ FilmsList.propTypes = {
   ).isRequired,
   onFilmClick: PropTypes.func.isRequired,
   showingFilmsCount: PropTypes.number.isRequired,
+  changeActiveFilm: PropTypes.func.isRequired,
+  activeFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+  }),
 };
 
 const mapStateToProps = (state) => ({

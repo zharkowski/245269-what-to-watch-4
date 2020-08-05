@@ -4,10 +4,12 @@ import Tabs from "../tabs/tabs.jsx";
 import {reviews} from "../../mocks/reviews";
 import {FilmsList} from "../films-list/films-list.jsx";
 import {MORE_LIKE_THIS_FILMS_COUNT} from "../../constants";
+import withActiveFilm from "../../hoc/with-active-film/with-active-film";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;
   const {title, genre, releaseYear, backgroundImage, picture} = film;
+  const FilmsListWithActiveFilm = withActiveFilm(FilmsList);
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -84,8 +86,8 @@ const FilmPage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList
-            films={relatedFilms.slice(0, 4)}
+          <FilmsListWithActiveFilm
+            films={relatedFilms.slice(0, MORE_LIKE_THIS_FILMS_COUNT)}
             onFilmClick={onFilmClick}
             showingFilmsCount={MORE_LIKE_THIS_FILMS_COUNT}
           />

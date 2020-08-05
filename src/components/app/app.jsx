@@ -7,10 +7,14 @@ import {filmDetails} from "../../mocks/films";
 
 class App extends React.PureComponent {
   render() {
-    const {promoFilm, films, activeFilm, onFilmClick} = this.props;
+    const {promoFilm, films, activeFilm, changeActiveFilm} = this.props;
     const relatedFilms = activeFilm
       ? films.filter((film) => film.genre === activeFilm.genre)
       : films;
+
+    const onFilmClick = () => {
+      changeActiveFilm(filmDetails);
+    };
 
     return (
       <BrowserRouter>
@@ -60,7 +64,7 @@ App.propTypes = {
     picture: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
   }),
-  onFilmClick: PropTypes.func.isRequired,
+  changeActiveFilm: PropTypes.func.isRequired,
 };
 
 export default App;

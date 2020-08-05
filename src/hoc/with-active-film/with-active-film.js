@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {filmDetails} from "../mocks/films";
 
 const withActiveFilm = (Component) => {
   class WithActiveFilm extends React.PureComponent {
@@ -10,35 +9,26 @@ const withActiveFilm = (Component) => {
         activeFilm: null,
       };
 
-      this.handleFilmClick = this.handleFilmClick.bind(this);
+      this.changeActiveFilm = this.changeActiveFilm.bind(this);
     }
 
-    handleFilmClick() {
-      this.setState({activeFilm: filmDetails});
+    changeActiveFilm(film) {
+      this.setState({activeFilm: film});
     }
 
     render() {
-      const {promoFilm, films} = this.props;
       const {activeFilm} = this.state;
       return (
         <Component
           {...this.props}
-          promoFilm={promoFilm}
-          films={films}
           activeFilm={activeFilm}
-          onFilmClick={this.handleFilmClick}
+          changeActiveFilm={this.changeActiveFilm}
         />
       );
     }
   }
 
   WithActiveFilm.propTypes = {
-    promoFilm: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      picture: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired,
-    }).isRequired,
     films: PropTypes.arrayOf(
         PropTypes.shape({
           title: PropTypes.string.isRequired,
