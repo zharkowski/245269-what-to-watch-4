@@ -71,6 +71,7 @@ describe(`Render App`, () => {
             promoReleaseYear={2014}
             films={films}
             onFilmClick={() => {}}
+            changeActiveFilm={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {

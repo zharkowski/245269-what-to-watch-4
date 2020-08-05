@@ -44,6 +44,7 @@ describe(`Render FilmsList`, () => {
           films={films}
           onFilmClick={() => {}}
           showingFilmsCount={DEFAULT_SHOWING_FILMS_COUNT}
+          changeActiveFilm={() => {}}
         />, {
           createNodeMock: () => {
             return {};

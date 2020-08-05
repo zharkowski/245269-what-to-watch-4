@@ -6,22 +6,6 @@ import Details from "../details/details.jsx";
 import Reviews from "../reviews/reviews.jsx";
 
 class Tabs extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTab: Tab.OVERVIEW,
-    };
-
-    this._getHandleTabClick = this._getHandleTabClick.bind(this);
-  }
-
-  _getHandleTabClick(tab) {
-    return (evt) => {
-      evt.preventDefault();
-      this.setState({activeTab: Tab[tab]});
-    };
-  }
-
   _getComponentByTab(tab) {
     const {film, reviews} = this.props;
     const {actors, genre, releaseYear, descriptions, director, ratingsCount, score, runtime} = film;
@@ -54,6 +38,7 @@ class Tabs extends React.PureComponent {
 
   render() {
     const tabs = Object.keys(Tab);
+    const {getHandleTabClick} = this.props;
     return (
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
@@ -63,8 +48,8 @@ class Tabs extends React.PureComponent {
               return (
                 <li
                   key={index}
-                  className={`movie-nav__item ${Tab[tab] === this.state.activeTab ? `movie-nav__item--active` : ``}`}
-                  onClick={this._getHandleTabClick(tab)}
+                  className={`movie-nav__item ${Tab[tab] === this.props.activeTab ? `movie-nav__item--active` : ``}`}
+                  onClick={getHandleTabClick(tab)}
                 >
                   <a href="#" className="movie-nav__link">{tabName}</a>
                 </li>
@@ -73,7 +58,7 @@ class Tabs extends React.PureComponent {
           </ul>
         </nav>
 
-        {this._getComponentByTab(this.state.activeTab)}
+        {this._getComponentByTab(this.props.activeTab)}
       </div>
     );
   }
@@ -105,6 +90,8 @@ Tabs.propTypes = {
         date: PropTypes.instanceOf(Date).isRequired,
       }).isRequired
   ).isRequired,
+  activeTab: PropTypes.string.isRequired,
+  getHandleTabClick: PropTypes.func.isRequired,
 };
 
 export default Tabs;

@@ -5,11 +5,13 @@ import {reviews} from "../../mocks/reviews";
 import {FilmsList} from "../films-list/films-list.jsx";
 import {MORE_LIKE_THIS_FILMS_COUNT} from "../../constants";
 import withActiveFilm from "../../hoc/with-active-film/with-active-film";
+import withActiveTab from "../../hoc/with-active-tab/with-active-tab";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;
   const {title, genre, releaseYear, backgroundImage, picture} = film;
   const FilmsListWithActiveFilm = withActiveFilm(FilmsList);
+  const TabsWithActiveTab = withActiveTab(Tabs);
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -74,7 +76,7 @@ const FilmPage = (props) => {
               />
             </div>
 
-            <Tabs
+            <TabsWithActiveTab
               film={film}
               reviews={reviews}
             />
