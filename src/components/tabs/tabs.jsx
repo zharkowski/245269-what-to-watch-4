@@ -85,7 +85,7 @@ Tabs.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseYear: PropTypes.number.isRequired,
     backgroundImage: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     descriptions: PropTypes.arrayOf(

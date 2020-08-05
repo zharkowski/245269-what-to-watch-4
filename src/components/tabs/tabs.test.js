@@ -7,7 +7,7 @@ const filmDetails = {
   genre: `Drama`,
   releaseYear: 2014,
   backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
-  poster: `img/the-grand-budapest-hotel-poster.jpg`,
+  picture: `img/the-grand-budapest-hotel-poster.jpg`,
   score: 8.9,
   ratingsCount: 240,
   descriptions: [

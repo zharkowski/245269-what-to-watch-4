@@ -6,24 +6,10 @@ import FilmPage from "../film-page/film-page.jsx";
 import {filmDetails} from "../../mocks/films";
 
 class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentFilm: null,
-    };
-
-    this.handleFilmClick = this.handleFilmClick.bind(this);
-  }
-
-  handleFilmClick() {
-    this.setState({currentFilm: filmDetails});
-  }
-
   render() {
-    const {title, genre, releaseYear, films} = this.props;
-    const currentFilm = this.state.currentFilm;
-    const relatedFilms = this.state.currentFilm !== null
-      ? films.filter((film) => film.genre === this.state.currentFilm.genre)
+    const {title, genre, releaseYear, films, currentFilm, onFilmClick} = this.props;
+    const relatedFilms = currentFilm !== null
+      ? films.filter((film) => film.genre === genre)
       : films;
 
     return (
@@ -33,7 +19,7 @@ class App extends React.PureComponent {
             {currentFilm ?
               <FilmPage
                 film={currentFilm}
-                onFilmClick={this.handleFilmClick}
+                onFilmClick={onFilmClick}
                 relatedFilms={relatedFilms}
               /> :
               <Main
@@ -41,14 +27,14 @@ class App extends React.PureComponent {
                 genre={genre}
                 releaseYear={releaseYear}
                 films={films}
-                onFilmClick={this.handleFilmClick}
+                onFilmClick={onFilmClick}
               />
             }
           </Route>
           <Route exact path="/dev-film-page">
             <FilmPage
               film={filmDetails}
-              onFilmClick={this.handleFilmClick}
+              onFilmClick={onFilmClick}
               relatedFilms={relatedFilms}
             />
           </Route>
@@ -68,6 +54,11 @@ App.propTypes = {
         picture: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
+  currentFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+  }),
+  onFilmClick: PropTypes.func.isRequired,
 };
 
 export default App;

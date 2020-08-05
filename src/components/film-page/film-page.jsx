@@ -7,7 +7,7 @@ import {MORE_LIKE_THIS_FILMS_COUNT} from "../../constants";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;
-  const {title, genre, releaseYear, backgroundImage, poster} = film;
+  const {title, genre, releaseYear, backgroundImage, picture} = film;
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -64,8 +64,12 @@ const FilmPage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={poster} alt={title} width="218"
-                height="327"/>
+              <img
+                src={picture}
+                alt={title}
+                width="218"
+                height="327"
+              />
             </div>
 
             <Tabs
@@ -111,7 +115,7 @@ FilmPage.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseYear: PropTypes.number.isRequired,
     backgroundImage: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     descriptions: PropTypes.arrayOf(
