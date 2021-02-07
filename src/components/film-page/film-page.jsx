@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import {reviews} from "../../mocks/reviews";
 import {FilmsList} from "../films-list/films-list.jsx";
-import {MORE_LIKE_THIS_FILMS_COUNT} from "../../constants";
-import withActiveFilm from "../../hoc/with-active-film/with-active-film";
-import withActiveTab from "../../hoc/with-active-tab/with-active-tab";
+import {MORE_LIKE_THIS_FILMS_COUNT, Tab} from "../../constants";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;
   const {title, genre, releaseYear, backgroundImage, picture} = film;
-  const FilmsListWithActiveFilm = withActiveFilm(FilmsList);
-  const TabsWithActiveTab = withActiveTab(Tabs);
+  const FilmsListWithActiveFilm = withActiveItem(FilmsList, null);
+  const TabsWithActiveTab = withActiveItem(Tabs, Tab.OVERVIEW);
   return (
     <>
       <section className="movie-card movie-card--full">

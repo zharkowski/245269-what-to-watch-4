@@ -4,12 +4,12 @@ import FilmCard from "../film-card/film-card.jsx";
 import {connect} from "react-redux";
 
 const FilmsList = React.memo((props) => {
-  const {films, showingFilmsCount, onFilmClick, changeActiveFilm, activeFilm} = props;
+  const {films, showingFilmsCount, onFilmClick, itemSetActiveHandler, activeItem} = props;
   const onFilmCardHover = (film) => {
-    changeActiveFilm(film);
+    itemSetActiveHandler(film);
   };
   const onFilmCardLeave = () => {
-    changeActiveFilm(null);
+    itemSetActiveHandler(null);
   };
   const filmClickHandler = (film) => {
     onFilmClick(film);
@@ -17,7 +17,7 @@ const FilmsList = React.memo((props) => {
   return (
     <div className="catalog__movies-list">
       {films.slice(0, showingFilmsCount).map((film, index) => {
-        const isActive = activeFilm === film;
+        const isActive = activeItem === film;
         return (
           <FilmCard
             key={`${index}-${film.title}`}
@@ -44,8 +44,8 @@ FilmsList.propTypes = {
   ).isRequired,
   onFilmClick: PropTypes.func.isRequired,
   showingFilmsCount: PropTypes.number.isRequired,
-  changeActiveFilm: PropTypes.func.isRequired,
-  activeFilm: PropTypes.shape({
+  itemSetActiveHandler: PropTypes.func.isRequired,
+  activeItem: PropTypes.shape({
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
   }),

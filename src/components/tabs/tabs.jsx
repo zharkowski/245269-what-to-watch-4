@@ -7,7 +7,7 @@ import Reviews from "../reviews/reviews.jsx";
 
 const Tabs = React.memo((props) => {
   const tabs = Object.keys(Tab);
-  const {getHandleTabClick} = props;
+  const {itemSetActiveHandler, activeItem} = props;
 
   const getComponentByTab = (tab) => {
     const {film, reviews} = props;
@@ -39,6 +39,13 @@ const Tabs = React.memo((props) => {
     }
   };
 
+  const clickHandler = (tab) => {
+    return (evt) => {
+      evt.preventDefault();
+      itemSetActiveHandler(tab);
+    };
+  };
+
   return (
     <div className="movie-card__desc">
       <nav className="movie-nav movie-card__nav">
@@ -48,8 +55,8 @@ const Tabs = React.memo((props) => {
             return (
               <li
                 key={index}
-                className={`movie-nav__item ${Tab[tab] === props.activeTab ? `movie-nav__item--active` : ``}`}
-                onClick={getHandleTabClick(tab)}
+                className={`movie-nav__item ${Tab[tab] === activeItem ? `movie-nav__item--active` : ``}`}
+                onClick={clickHandler(Tab[tab])}
               >
                 <a href="#" className="movie-nav__link">{tabName}</a>
               </li>
@@ -58,7 +65,7 @@ const Tabs = React.memo((props) => {
         </ul>
       </nav>
 
-      {getComponentByTab(props.activeTab)}
+      {getComponentByTab(activeItem)}
     </div>
   );
 });
@@ -91,8 +98,8 @@ Tabs.propTypes = {
         date: PropTypes.instanceOf(Date).isRequired,
       }).isRequired
   ).isRequired,
-  activeTab: PropTypes.string.isRequired,
-  getHandleTabClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  itemSetActiveHandler: PropTypes.func.isRequired,
 };
 
 export default Tabs;

@@ -1,34 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Tab} from "../../constants";
 
-const withActiveTab = (Component) => {
-  class WithActiveTab extends React.PureComponent {
+const withActiveItem = (Component, initialItem) => {
+  class WithActiveItem extends React.PureComponent {
     constructor(props) {
       super(props);
       this.state = {
-        activeTab: Tab.OVERVIEW,
+        activeItem: initialItem,
       };
 
-      this._getHandleTabClick = this._getHandleTabClick.bind(this);
+      this._itemSetActiveHandler = this._itemSetActiveHandler.bind(this);
     }
 
-    _getHandleTabClick(tab) {
-      this.setState({activeTab: Tab[tab]});
+    _itemSetActiveHandler(item) {
+      this.setState({activeItem: item});
     }
 
     render() {
       return (
         <Component
           {...this.props}
-          activeTab={this.state.activeTab}
-          getHandleTabClick={this._getHandleTabClick}
+          activeItem={this.state.activeItem}
+          itemSetActiveHandler={this._itemSetActiveHandler}
         />
       );
     }
   }
 
-  WithActiveTab.propTypes = {
+  WithActiveItem.propTypes = {
     film: PropTypes.shape({
       title: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
@@ -45,7 +44,7 @@ const withActiveTab = (Component) => {
           PropTypes.string.isRequired
       ).isRequired,
       runtime: PropTypes.number.isRequired,
-    }).isRequired,
+    }),
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           userName: PropTypes.string.isRequired,
@@ -53,10 +52,16 @@ const withActiveTab = (Component) => {
           comment: PropTypes.string.isRequired,
           date: PropTypes.instanceOf(Date).isRequired,
         }).isRequired
-    ).isRequired,
+    ),
+    films: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          picture: PropTypes.string.isRequired,
+        }).isRequired
+    ),
   };
 
-  return WithActiveTab;
+  return WithActiveItem;
 };
 
-export default withActiveTab;
+export default withActiveItem;

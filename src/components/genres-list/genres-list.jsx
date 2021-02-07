@@ -5,18 +5,18 @@ import PropTypes from "prop-types";
 import {ALL_GENRES} from "../../constants";
 
 const GenresList = (props) => {
-  const {genres, activeGenre, onGenreClick} = props;
+  const {genres, activeItem, itemSetActiveHandler} = props;
   const getGenreHandler = (genre) => (evt) => {
     evt.preventDefault();
-    onGenreClick(genre);
+    itemSetActiveHandler(genre);
   };
   return (
     <ul className="catalog__genres-list">
-      <li className={`catalog__genres-item ${activeGenre === ALL_GENRES ? `catalog__genres-item--active` : ``}`}>
+      <li className={`catalog__genres-item ${activeItem === ALL_GENRES ? `catalog__genres-item--active` : ``}`}>
         <a href="#" className="catalog__genres-link" onClick={getGenreHandler(ALL_GENRES)}>All genres</a>
       </li>
       {genres.map((genre, i) => (
-        <li key={i} className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`}>
+        <li key={i} className={`catalog__genres-item ${activeItem === genre ? `catalog__genres-item--active` : ``}`}>
           <a href="#" className="catalog__genres-link" onClick={getGenreHandler(genre)}>{genre}</a>
         </li>
       ))}
@@ -26,17 +26,17 @@ const GenresList = (props) => {
 
 GenresList.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onGenreClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  itemSetActiveHandler: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = (state) => ({
-  activeGenre: state.genre,
+  activeItem: state.genre,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenreClick(genre) {
+  itemSetActiveHandler(genre) {
     dispatch(ActionCreator.changeGenreFilter(genre));
     dispatch(ActionCreator.getFilmsByGenre(genre));
     dispatch(ActionCreator.setDefaultShowingFilmsCount());

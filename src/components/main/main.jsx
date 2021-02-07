@@ -5,13 +5,14 @@ import FilmsList from "../films-list/films-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import {getGenresFromFilms} from "../../utils";
-import {MAX_GENRES_COUNT} from "../../constants";
-import withActiveFilm from "../../hoc/with-active-film/with-active-film";
+import {ALL_GENRES, MAX_GENRES_COUNT} from "../../constants";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
 
 const Main = (props) => {
   const {promoFilm, films, onFilmClick, currentGenreFilmsCount, showingFilmsCount} = props;
   const genres = getGenresFromFilms(films).slice(0, MAX_GENRES_COUNT);
-  const FilmsListWithActiveFilm = withActiveFilm(FilmsList);
+  const FilmsListWithActiveFilm = withActiveItem(FilmsList, null);
+  const GenresListWithActiveGenre = withActiveItem(GenresList, ALL_GENRES);
   return (
     <>
       <section className="movie-card">
@@ -74,8 +75,10 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList genres={genres}/>
-
+          {/* <GenresList genres={genres}/>*/}
+          <GenresListWithActiveGenre
+            genres={genres}
+          />
           <FilmsListWithActiveFilm
             films={films}
             onFilmClick={onFilmClick}

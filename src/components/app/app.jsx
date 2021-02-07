@@ -6,22 +6,22 @@ import FilmPage from "../film-page/film-page.jsx";
 import {filmDetails} from "../../mocks/films";
 
 const App = React.memo((props) => {
-  const {promoFilm, films, activeFilm, changeActiveFilm} = props;
-  const relatedFilms = activeFilm
-    ? films.filter((film) => film.genre === activeFilm.genre)
+  const {promoFilm, films, activeItem, itemSetActiveHandler} = props;
+  const relatedFilms = activeItem
+    ? films.filter((film) => film.genre === activeItem.genre)
     : films;
 
   const onFilmClick = () => {
-    changeActiveFilm(filmDetails);
+    itemSetActiveHandler(filmDetails);
   };
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          {activeFilm ?
+          {activeItem ?
             <FilmPage
-              film={activeFilm}
+              film={activeItem}
               onFilmClick={onFilmClick}
               relatedFilms={relatedFilms}
             /> :
@@ -59,12 +59,12 @@ App.propTypes = {
         picture: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
-  activeFilm: PropTypes.shape({
+  activeItem: PropTypes.shape({
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
   }),
-  changeActiveFilm: PropTypes.func.isRequired,
+  itemSetActiveHandler: PropTypes.func.isRequired,
 };
 
 export default App;

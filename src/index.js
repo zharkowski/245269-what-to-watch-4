@@ -5,7 +5,7 @@ import {films} from "./mocks/films";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import {reducer} from "./reducer";
-import withActiveFilm from "./hoc/with-active-film/with-active-film";
+import withActiveItem from "./hoc/with-active-item/with-active-item";
 import {filmDetails} from "./mocks/films";
 
 const store = createStore(
@@ -13,7 +13,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
-const AppWithActiveFilm = withActiveFilm(App);
+const AppWithActiveFilm = withActiveItem(App, null);
 
 ReactDOM.render(
     <Provider
