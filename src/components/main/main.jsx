@@ -6,10 +6,12 @@ import GenresList from "../genres-list/genres-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import {getGenresFromFilms} from "../../utils";
 import {MAX_GENRES_COUNT} from "../../constants";
+import withActiveFilm from "../../hoc/with-active-film/with-active-film";
 
 const Main = (props) => {
-  const {title, genre, releaseYear, films, onFilmClick, currentGenreFilmsCount, showingFilmsCount} = props;
+  const {promoFilm, films, onFilmClick, currentGenreFilmsCount, showingFilmsCount} = props;
   const genres = getGenresFromFilms(films).slice(0, MAX_GENRES_COUNT);
+  const FilmsListWithActiveFilm = withActiveFilm(FilmsList);
   return (
     <>
       <section className="movie-card">
@@ -43,10 +45,10 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">{promoFilm.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{releaseYear}</span>
+                <span className="movie-card__genre">{promoFilm.genre}</span>
+                <span className="movie-card__year">{promoFilm.releaseYear}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -74,7 +76,10 @@ const Main = (props) => {
 
           <GenresList genres={genres}/>
 
-          <FilmsList onFilmClick={onFilmClick}/>
+          <FilmsListWithActiveFilm
+            films={films}
+            onFilmClick={onFilmClick}
+          />
 
           {showingFilmsCount < currentGenreFilmsCount ? <ShowMore/> : ``}
         </section>
@@ -98,9 +103,12 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
+  promoFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+  }).isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,

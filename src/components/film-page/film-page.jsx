@@ -4,10 +4,14 @@ import Tabs from "../tabs/tabs.jsx";
 import {reviews} from "../../mocks/reviews";
 import {FilmsList} from "../films-list/films-list.jsx";
 import {MORE_LIKE_THIS_FILMS_COUNT} from "../../constants";
+import withActiveFilm from "../../hoc/with-active-film/with-active-film";
+import withActiveTab from "../../hoc/with-active-tab/with-active-tab";
 
 const FilmPage = (props) => {
   const {film, relatedFilms, onFilmClick} = props;
-  const {title, genre, releaseYear, backgroundImage, poster} = film;
+  const {title, genre, releaseYear, backgroundImage, picture} = film;
+  const FilmsListWithActiveFilm = withActiveFilm(FilmsList);
+  const TabsWithActiveTab = withActiveTab(Tabs);
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -64,11 +68,15 @@ const FilmPage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={poster} alt={title} width="218"
-                height="327"/>
+              <img
+                src={picture}
+                alt={title}
+                width="218"
+                height="327"
+              />
             </div>
 
-            <Tabs
+            <TabsWithActiveTab
               film={film}
               reviews={reviews}
             />
@@ -80,8 +88,8 @@ const FilmPage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList
-            films={relatedFilms.slice(0, 4)}
+          <FilmsListWithActiveFilm
+            films={relatedFilms.slice(0, MORE_LIKE_THIS_FILMS_COUNT)}
             onFilmClick={onFilmClick}
             showingFilmsCount={MORE_LIKE_THIS_FILMS_COUNT}
           />
@@ -111,7 +119,7 @@ FilmPage.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseYear: PropTypes.number.isRequired,
     backgroundImage: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     descriptions: PropTypes.arrayOf(

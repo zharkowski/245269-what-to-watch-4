@@ -5,25 +5,12 @@ import Overview from "../overview/overview.jsx";
 import Details from "../details/details.jsx";
 import Reviews from "../reviews/reviews.jsx";
 
-class Tabs extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTab: Tab.OVERVIEW,
-    };
+const Tabs = React.memo((props) => {
+  const tabs = Object.keys(Tab);
+  const {getHandleTabClick} = props;
 
-    this._getHandleTabClick = this._getHandleTabClick.bind(this);
-  }
-
-  _getHandleTabClick(tab) {
-    return (evt) => {
-      evt.preventDefault();
-      this.setState({activeTab: Tab[tab]});
-    };
-  }
-
-  _getComponentByTab(tab) {
-    const {film, reviews} = this.props;
+  const getComponentByTab = (tab) => {
+    const {film, reviews} = props;
     const {actors, genre, releaseYear, descriptions, director, ratingsCount, score, runtime} = film;
     switch (tab) {
       case Tab.OVERVIEW:
@@ -50,34 +37,33 @@ class Tabs extends React.PureComponent {
       default:
         return null;
     }
-  }
+  };
 
-  render() {
-    const tabs = Object.keys(Tab);
-    return (
-      <div className="movie-card__desc">
-        <nav className="movie-nav movie-card__nav">
-          <ul className="movie-nav__list">
-            {tabs.map((tab, index) => {
-              const tabName = Tab[tab][0].toUpperCase() + Tab[tab].slice(1);
-              return (
-                <li
-                  key={index}
-                  className={`movie-nav__item ${Tab[tab] === this.state.activeTab ? `movie-nav__item--active` : ``}`}
-                  onClick={this._getHandleTabClick(tab)}
-                >
-                  <a href="#" className="movie-nav__link">{tabName}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+  return (
+    <div className="movie-card__desc">
+      <nav className="movie-nav movie-card__nav">
+        <ul className="movie-nav__list">
+          {tabs.map((tab, index) => {
+            const tabName = Tab[tab][0].toUpperCase() + Tab[tab].slice(1);
+            return (
+              <li
+                key={index}
+                className={`movie-nav__item ${Tab[tab] === props.activeTab ? `movie-nav__item--active` : ``}`}
+                onClick={getHandleTabClick(tab)}
+              >
+                <a href="#" className="movie-nav__link">{tabName}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-        {this._getComponentByTab(this.state.activeTab)}
-      </div>
-    );
-  }
-}
+      {getComponentByTab(props.activeTab)}
+    </div>
+  );
+});
+
+Tabs.displayName = `Tabs`;
 
 Tabs.propTypes = {
   film: PropTypes.shape({
@@ -85,7 +71,7 @@ Tabs.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseYear: PropTypes.number.isRequired,
     backgroundImage: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     descriptions: PropTypes.arrayOf(
@@ -105,6 +91,8 @@ Tabs.propTypes = {
         date: PropTypes.instanceOf(Date).isRequired,
       }).isRequired
   ).isRequired,
+  activeTab: PropTypes.string.isRequired,
+  getHandleTabClick: PropTypes.func.isRequired,
 };
 
 export default Tabs;

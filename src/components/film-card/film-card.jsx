@@ -2,6 +2,7 @@ import React from "react";
 import PropsTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {FILM_CARD_VIDEO_DELAY} from "../../constants";
+import withVideoPlayer from "../../hoc/with-video-player/with-video-player";
 
 class FilmCard extends React.PureComponent {
   constructor(props) {
@@ -33,7 +34,7 @@ class FilmCard extends React.PureComponent {
   render() {
     const {film, isPlaying} = this.props;
     const {title, picture, src} = film;
-
+    const VideoWithPlayer = withVideoPlayer(VideoPlayer);
 
     return (
       <article
@@ -45,7 +46,7 @@ class FilmCard extends React.PureComponent {
           className="small-movie-card__image"
           onClick={this._handleFilmClick}
         >
-          <VideoPlayer
+          <VideoWithPlayer
             isPlaying={isPlaying}
             src={src}
             poster={picture}

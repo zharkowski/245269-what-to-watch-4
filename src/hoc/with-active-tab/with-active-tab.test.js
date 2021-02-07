@@ -1,9 +1,19 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Tabs from "./tabs";
-import {Tab} from "../../constants";
+import PropTypes from "prop-types";
+import withActiveTab from "./with-active-tab";
 
-const filmDetails = {
+const MockComponent = (props) => {
+  const {children} = props;
+
+  return (
+    <div>
+      {children}
+    </div>
+  );
+};
+
+const film = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   releaseYear: 2014,
@@ -52,20 +62,26 @@ const reviews = [{
   date: new Date(`2020-12-20T14:13:56.569Z`),
 }];
 
-describe(`Render Reviews`, () => {
-  it(`Should Reviews render correctly`, () => {
-    const tree = renderer.create(
-        <Tabs
-          film={filmDetails}
-          reviews={reviews}
-          activeTab={Tab.OVERVIEW}
-          getHandleTabClick={() => {}}
-        />, {
-          createNodeMock: () => {
-            return {};
-          }
-        }).toJSON();
+MockComponent.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+};
 
-    expect(tree).toMatchSnapshot();
-  });
+const MockComponentWithAudio = withActiveTab(MockComponent);
+
+it(`withActiveTab is rendered correctly`, () => {
+  const tree = renderer.create((
+    <MockComponentWithAudio
+      film={film}
+      reviews={reviews}
+    />
+  ), {
+    createNodeMock() {
+      return {};
+    }
+  }).toJSON();
+
+  expect(tree).toMatchSnapshot();
 });

@@ -15,7 +15,9 @@ describe(`Render VideoPlayer`, () => {
           isPlaying={false}
           poster={film.picture}
           src={film.src}
-        />, {
+        >
+          <video/>
+        </VideoPlayer>, {
           createNodeMock: () => {
             return {};
           }

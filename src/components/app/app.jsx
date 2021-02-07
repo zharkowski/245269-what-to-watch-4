@@ -5,69 +5,66 @@ import Main from "../main/main.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import {filmDetails} from "../../mocks/films";
 
-class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentFilm: null,
-    };
+const App = React.memo((props) => {
+  const {promoFilm, films, activeFilm, changeActiveFilm} = props;
+  const relatedFilms = activeFilm
+    ? films.filter((film) => film.genre === activeFilm.genre)
+    : films;
 
-    this.handleFilmClick = this.handleFilmClick.bind(this);
-  }
+  const onFilmClick = () => {
+    changeActiveFilm(filmDetails);
+  };
 
-  handleFilmClick() {
-    this.setState({currentFilm: filmDetails});
-  }
-
-  render() {
-    const {title, genre, releaseYear, films} = this.props;
-    const currentFilm = this.state.currentFilm;
-    const relatedFilms = this.state.currentFilm !== null
-      ? films.filter((film) => film.genre === this.state.currentFilm.genre)
-      : films;
-
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            {currentFilm ?
-              <FilmPage
-                film={currentFilm}
-                onFilmClick={this.handleFilmClick}
-                relatedFilms={relatedFilms}
-              /> :
-              <Main
-                title={title}
-                genre={genre}
-                releaseYear={releaseYear}
-                films={films}
-                onFilmClick={this.handleFilmClick}
-              />
-            }
-          </Route>
-          <Route exact path="/dev-film-page">
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {activeFilm ?
             <FilmPage
-              film={filmDetails}
-              onFilmClick={this.handleFilmClick}
+              film={activeFilm}
+              onFilmClick={onFilmClick}
               relatedFilms={relatedFilms}
+            /> :
+            <Main
+              promoFilm={promoFilm}
+              films={films}
+              onFilmClick={onFilmClick}
             />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
+          }
+        </Route>
+        <Route exact path="/dev-film-page">
+          <FilmPage
+            film={filmDetails}
+            onFilmClick={onFilmClick}
+            relatedFilms={relatedFilms}
+          />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+});
+
+App.displayName = `App`;
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
+  promoFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+  }).isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         picture: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
+  activeFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  }),
+  changeActiveFilm: PropTypes.func.isRequired,
 };
 
 export default App;

@@ -49,6 +49,14 @@ const films = [{
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 }];
 
+const mockPromoFilm = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  releaseYear: 2014,
+  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
+  picture: `img/the-grand-budapest-hotel-poster.jpg`,
+};
+
 describe(`Render Main`, () => {
   it(`Should WelcomeScreen render correctly`, () => {
     const store = mockStore({
@@ -59,8 +67,7 @@ describe(`Render Main`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <Main
-            title={`The Grand Budapest Hotel`}
-            genre={`Drama`}
+            promoFilm={mockPromoFilm}
             releaseYear={2014}
             films={films}
             onFilmClick={() => {}}
